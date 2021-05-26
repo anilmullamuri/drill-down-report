@@ -1,0 +1,34 @@
+.smart-pivot-table {
+    max-height: 500px;
+}
+.noDataContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    align-items: center;
+}
+.float{
+    position: fixed;
+    width: 43px;
+    height: 25px;
+    background-color: #70509c;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #ded3de;
+    z-index: 1;
+    top: 51px;
+    left: -8px;
+}
+.float:active{
+    background-color: #ded3de;
+    color: #70509c;
+}
+
+.my-float{
+	margin-top:22px;
+}
+.fa{
+    padding: 4px !important;
+}

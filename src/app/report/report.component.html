@@ -1,0 +1,153 @@
+<div class="tableRowDateContainer">
+    <a style="text-decoration: none;" class="tableRowDate iconsAction" [routerLink]="['/dashboard']" title="Back to Dashboard">
+        <i class="fa fa-chevron-left"></i>
+    </a>
+    <div class="tableRowDate nameAction">
+        <smart-input #reportName class="underlined" [placeholder]='"Report name"'></smart-input>
+    </div>
+    <div class="tableRowDate">
+        Start Date &nbsp;
+        <smart-date-time-picker (change)="getReport()" drop-down-position='overlay-bottom' auto-close [nullable]="true"
+             [value]="null" format-string='dd-MMM-yyyy' #datetimepickerto class="demoDateTimePickerWide"
+            [calendarButton]="true" [enableMouseWheelAction]="true" drop-down-display-mode="calendar"
+            [spinButtons]="true" [spinButtonsPosition]="'right'"></smart-date-time-picker>
+    </div>
+    <div class="tableRowDate">
+        End Date &nbsp;
+        <smart-date-time-picker (change)="getReport()" drop-down-position='overlay-bottom' auto-close [nullable]="true"
+        [value]="null" format-string='dd-MMM-yyyy' #datetimepickerfrom class="demoDateTimePickerWide"
+        [calendarButton]="true" [enableMouseWheelAction]="true" drop-down-display-mode="calendar"
+        [spinButtons]="true" [spinButtonsPosition]="'right'"></smart-date-time-picker>
+    </div>
+
+    <div class="tableRowDate iconsAction" (click)="flipChart()" *ngIf="showChart">
+        <i [ngClass]="pieChart ? 'fa fa-bar-chart' : 'fa fa-pie-chart'"></i>
+    </div> 
+    <div class="tableRowDate iconsAction" (click)="getColumnAndShowChart()" *ngIf="showTable">
+        <i class="fa fa-bar-chart"></i>
+    </div>    
+    <div class="tableRowDate iconsAction" (click)="showTable = true;showChart = false" *ngIf="showChart">
+        <i class="fa fa-table"></i>
+    </div>
+    <div class="tableRowDate iconsAction" *ngIf="drillDownService.arrangementsData.length && !showChart">
+        <i class="fa fa-download"></i>
+        <div class="downloadTypeContainer">
+            <div (click)="downloadReport('XLSX')">SpreadSheet (XLSX)</div>
+            <div (click)="downloadReport('PDF')">Document (PDF)</div>
+            <div (click)="downloadReport('HTML')">Webpage (HTML)</div>
+            <div (click)="downloadReport('JSON')">Javascript Object(JSON)</div>
+            <div (click)="downloadReport('XML')">Markup Nodes(XML)</div>
+            <div (click)="downloadReport('CSV')">Comma-separated (CSV)</div>
+            <div (click)="downloadReport('TSV')">Tab seperated  (TSV)</div>
+        </div>
+    </div>
+    <div class="tableRowDate iconsAction" *ngIf="drillDownService.arrangementsData.length && showChart">
+    <i class="fa fa-download"></i>
+    <div class="downloadTypeContainer">
+        <div (click)="downloadChart('PNG', pieChart)">Save As PNG</div>
+        <!-- <div (click)="downloadChart('JPEG')">Save As JPEG</div> -->
+        <div (click)="downloadChart('PDF', pieChart)">Save As PDF</div>
+    </div>
+    </div>
+    <div class="tableRowDate iconsAction" (click)="saveReport()"
+        *ngIf="drillDownService.arrangementsData.length">
+        <div class="saveTypeContainer downloadTypeContainer">
+            <div (click)="saveReport()">Save</div>
+            <div (click)="saveReportAs()">Save As</div>
+        </div>
+        <ng-container *ngIf="!saveReportLoading; else loading">
+            <i class="fa fa-save"></i>
+        </ng-container>
+    </div>
+</div>
+<ng-container *ngIf="showTable">
+    <data-table [columnData]="columnData" #dataTable></data-table>
+</ng-container>
+<ng-container *ngIf="showChart && verticalBarChart">
+    <data-chart [columnData]="columnData" [title]="reportName" [desc]="" #dataChart></data-chart>
+</ng-container>
+<ng-container *ngIf="showChart && pieChart">
+    <pie-data-chart [columnData]="columnData" [title]="reportName" [desc]="" #pieDataChart></pie-data-chart>
+</ng-container>
+<ng-container *ngIf="showLoading">
+    <div class="lds-spinner">
+        <ng-template [ngTemplateOutlet]="loading"></ng-template>
+    </div>
+</ng-container>
+<ng-template #loading>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px"
+        viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none; shape-rendering: auto;">
+        <g transform="rotate(0 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-1.375s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(30 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-1.25s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(60 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-1.125s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(90 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-1s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(120 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.875s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(150 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.75s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(180 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.625s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(210 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.5s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(240 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.375s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(270 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.25s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(300 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="-0.125s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+        <g transform="rotate(330 50 50)" class="">
+            <rect x="48" y="29" rx="2.88" ry="1.74" width="4" height="10" fill="#77868b" class="">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.5s" begin="0s"
+                    repeatCount="indefinite" class="" />
+            </rect>
+        </g>
+    </svg>
+</ng-template>

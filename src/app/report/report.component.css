@@ -1,0 +1,62 @@
+.tableRowDate {
+    display: flex;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    color: rgb(90,90,90);
+    font-size: 13px;
+    flex: 1;
+    margin-bottom: -1px;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+.tableRowDateContainer {
+    display: flex;
+}
+.tableRowDate.iconsAction {
+    /*width: 10px; */
+    flex: none;
+    cursor: pointer;
+    position: relative;
+    padding: 18px;
+}
+.tableRowDate.nameAction {
+    flex: none;
+}
+.tableRowDate.iconsAction:hover .fa{
+    color: rgb(150,150,150);
+}
+/** .lds-spinner {
+    position: fixed;
+    top: 40%;
+    left: 48%;
+} */
+.lds-spinner{
+    padding: 196px;
+    padding-left: 661px;
+}
+.downloadTypeContainer {
+    position: absolute;
+    z-index: 1020;
+    top: 100%;
+    right: 0px;
+    padding: 8px 0px;
+    display: none;
+    background: white;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.2);
+}
+.downloadTypeContainer > div {
+    padding: 16px 32px;
+    width: 160px;
+    cursor: pointer;
+}
+.downloadTypeContainer>div:hover {
+    background: #eee;
+}
+.iconsAction:hover .downloadTypeContainer{
+    display: block;
+}
+.smart-date-time-picker[spin-buttons][calendar-button] {
+    width: 75% !important;
+}

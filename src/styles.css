@@ -1,0 +1,179 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: white;
+    color: rgba(0,0,0,0.85);
+}
+data-table-dimension-item {
+    display: flex;
+}
+.multiselect-dropdown .dropdown-btn {
+    margin: 8px 0px !important;
+    padding: 6px 12px !important;
+    width: calc(100% - 24px) !important;
+}
+.dropdown-list .filter-textbox input {
+    width: calc(100% - 26px) !important;
+}
+:focus {
+    outline: none;
+}
+.smart-table-window.fields {
+    --smart-window-default-height: 600px !important;
+}   
+#watermark {
+    display: none !important;
+}
+
+smart-filter-panel[disabled] {
+    display: none;
+}
+
+
+/*Custom Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}    
+.smart-pivot-panel .smart-pivot-panel-label {
+    background: #70509c !important;
+}
+.smart-pivot-panel-active-columns {
+    width: 49.5%;
+    height: 130px;
+}
+.smart-pivot-panel-columns-view .smart-pivot-panel-active-columns:nth-child(4){
+    margin-top: -260px;
+    margin-left: 129px;
+    border-left: 1px solid #ccc;
+}
+.smart-pivot-panel-columns-view .smart-pivot-panel-active-columns:nth-child(3){
+    width: 100%;
+}
+.smart-tree .smart-tree-item-label-element>span {
+    padding: 0px !important; 
+    font-size: 13px;
+}
+.smart-tree .smart-tree-item-label-container {
+    height: 18px !important;
+}
+.smart-pivot-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.smart-pivot-table tbody tr:hover, .smart-pivot-table tfoot tr td {
+    background: #dbd5e3;
+  }
+  .smart-pivot-table tr td, .smart-pivot-table tr th {
+      font-size: 13px;
+  }
+
+.reports-wrapper .smart-pivot-table[toolbar][designer] .smart-pivot-table-toolbar{
+    width: 76.9%;
+    position: absolute;
+    right: 0;
+}
+/** .tableRowDateContainer {
+    float: right;
+    width: 76.9%;
+} */
+.smart-table>.smart-container {
+    position: relative;
+    overflow: visible !important;
+    border-radius: inherit;
+    max-height: inherit;
+}
+.smart-pivot-table[designer] .smart-pivot-table-designer-container {
+    margin-top: -47px;
+    position: relative !important;
+    left: -3px !important;
+}
+.smart-pivot-table[toolbar][designer] .smart-pivot-table-main-container {
+    width: 98.7% !important;
+    height: 100%;
+    margin-left:15px;
+    border: 1px solid #efedef;
+    margin-top: -1px;
+}
+.tableRowDate.nameAction {
+    width: 17% !important;
+}
+.smart-table>.smart-container {
+    border: none !important;
+    box-shadow: none !important;
+}
+.smart-pivot-table .smart-pivot-table-toolbar {
+    border-left: 1px solid #e4e2e4 !important;
+    border-top: 1px solid #e4e2e4 !important;
+}
+smart-breadcrumb .smart-breadcrumb-item-label, smart-breadcrumb[add-new-item] .smart-breadcrumb-items>smart-button>button, .smart-pivot-table smart-breadcrumb .smart-breadcrumb-placeholder {
+    font-size: 13px !important;
+}
+.tableRowDate {
+    display: flex;
+    padding: 18px !important;
+    border: none !important;
+}   
+.reports-wrapper .smart-table-container tbody tr th, .reports-wrapper .smart-table-container tbody tr td {
+    height: 15px !important;
+}
+.smart-pivot-table[toolbar] .smart-pivot-table-designer-container {
+    height: 500px !important;
+}
+.smart-pivot-panel .smart-pivot-panel-columns-view {
+    border-bottom: 1px solid #e4e2e4 !important;
+}
+.smart-accordion-item .smart-accordion-item-header {
+    height: 30px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+.smart-tree[selection-mode=checkBox] .smart-tree-item-label-element>span, .smart-tree[selection-mode=radioButton] .smart-tree-item-label-element>span {
+    padding-left: 15px !important;
+    color: #333 !important;
+}
+.smart-filter-panel .smart-filter-panel-button-container>smart-button button {
+    background: #70509c !important;
+    color: #fff !important;
+}
+.smart-tree:not([show-lines])[selection-mode=checkBox]:not([toggle-element-position=far]) smart-tree-item>.smart-tree-item-label-container:after, .smart-tree:not([show-lines])[selection-mode=checkBox]:not([toggle-element-position=far]) smart-tree-items-group>.smart-tree-item-label-container:after, .smart-tree:not([show-lines])[selection-mode=radioButton]:not([toggle-element-position=far]) smart-tree-item>.smart-tree-item-label-container:after, .smart-tree:not([show-lines])[selection-mode=radioButton]:not([toggle-element-position=far]) smart-tree-items-group>.smart-tree-item-label-container:after {
+    background: #70509c !important;
+}
+.smart-tree:not([selection-display-mode=label]) smart-tree-item[selected], .smart-tree:not([selection-display-mode=label]) smart-tree-items-group[selected]>.smart-tree-item-label-container {
+    border-color: var(--smart-ui-state-border-selected);
+    background-color: transparent !important;
+    border: none !important;
+}
+.smart-tree:not([show-lines]):not([selection-display-mode=label]):not([right-to-left]) smart-tree-items-group>.smart-tree-item-label-container>.smart-tree-item-label-element>span {
+    padding-left: 0 !important;
+}
+.smart-header-section, .smart-formatting-panel:not([animation=none]) .smart-add-new-button, .smart-footer .ok.primary.smart-element.smart-button .smart-button.smart-unselectable.smart-container {
+    background-color: #70509c !important;
+}
+button.smart-button[type]:not([disabled]):active {
+    color:  #fff !important;
+    border-color:  #70509c !important;
+    background-color: #70509c !important;
+}
+/*New Code */
+.smart-chart-label-text{
+	fill: red !important;
+}
+.smart-table td, .smart-table th{
+    padding: 10px !important;
+}
+.smart-pivot-table tr td{
+    line-height: 0px !important;
+}
+.smart-table tbody tr, .smart-table tfoot tr{
+    height: 30px !important;
+}
+.smart-table thead tr {
+    height: 40px !important;
+}
+.expanded{
+    padding: 10px !important;
+}

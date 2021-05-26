@@ -1,0 +1,19 @@
+<ng-container  *ngIf="drilldownService.arrangementsData.length; else noData">
+    <div class="reports-wrapper">
+        <a class="float" (click)="toggleDesigner()" title="Designer">
+            <i [ngClass]="designer ? 'fa fa-chevron-left' : 'fa fa-chevron-right'"></i>
+            </a>
+<smart-pivot-table #pivottable [getDefaultSummaryFunction]="getDefaultSummaryFunction" id="pivotTable"[designer]="designer" 
+    designer-position='near' [conditionalFormatting]="conditionalFormatting" [dataSource]="dataSource"
+    [freezeHeader]="freezeHeader" [keyboardNavigation]="keyboardNavigation" [toolbar]="toolbar" [columns]="columns"
+    sort-mode="one" [columnTotals]="columnTotals" [drillDown]="cellDrillDown" [grandTotal]="grandTotals" [rowTotals]="rowTotals"
+    groupLayout="classic" rowTotalsPosition="near" [tooltip]="true" [onCellRender]="onCellRender" [onColumnRender]="onColumnRender"
+    [onInit]="onInit" [rowSummary]="rowSummary" [enableSortByRowGroups]="true"> 
+</smart-pivot-table>
+</div>
+</ng-container>
+<ng-template #noData>
+    <div class="noDataContainer">
+        No data found
+    </div>
+</ng-template>
