@@ -63,7 +63,7 @@ export class DataTableComponent implements OnInit,AfterViewInit {
   keyboardNavigation = true;
   toolbar = true;
   columnTotals = false;
-  cellDrillDown = false;
+  cellDrillDown = true;
   filters = {};
   columns = [
     {
